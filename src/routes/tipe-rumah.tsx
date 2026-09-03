@@ -26,7 +26,7 @@ export const Route = createFileRoute("/tipe-rumah")({
 });
 
 function HouseTypes() {
-  const house = houses[0];
+  const house = houses[0]!;
 
   return (
     <>
