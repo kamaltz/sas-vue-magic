@@ -33,7 +33,7 @@ export const Route = createFileRoute("/fasilitas")({
       },
     ],
   }),
-  component: Facilities;
+  component: Facilities,
 });
 
 const icons: Record<string, LucideIcon> = {
