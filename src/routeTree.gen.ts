@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FasilitasRouteImport } from './routes/fasilitas'
+import { Route as TipeRumahRouteImport } from './routes/tipe-rumah'
+import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FasilitasRoute = FasilitasRouteImport.update({
+  id: '/fasilitas',
+  path: '/fasilitas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TipeRumahRoute = TipeRumahRouteImport.update({
+  id: '/tipe-rumah',
+  path: '/tipe-rumah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VirtualTourRoute = VirtualTourRouteImport.update({
+  id: '/virtual-tour',
+  path: '/virtual-tour',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/fasilitas': typeof FasilitasRoute
+  '/tipe-rumah': typeof TipeRumahRoute
+  '/virtual-tour': typeof VirtualTourRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/fasilitas': typeof FasilitasRoute
+  '/tipe-rumah': typeof TipeRumahRoute
+  '/virtual-tour': typeof VirtualTourRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/fasilitas': typeof FasilitasRoute
+  '/tipe-rumah': typeof TipeRumahRoute
+  '/virtual-tour': typeof VirtualTourRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/fasilitas' | '/tipe-rumah' | '/virtual-tour'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/fasilitas' | '/tipe-rumah' | '/virtual-tour'
+  id: '__root__' | '/' | '/fasilitas' | '/tipe-rumah' | '/virtual-tour'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FasilitasRoute: typeof FasilitasRoute
+  TipeRumahRoute: typeof TipeRumahRoute
+  VirtualTourRoute: typeof VirtualTourRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fasilitas': {
+      id: '/fasilitas'
+      path: '/fasilitas'
+      fullPath: '/fasilitas'
+      preLoaderRoute: typeof FasilitasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tipe-rumah': {
+      id: '/tipe-rumah'
+      path: '/tipe-rumah'
+      fullPath: '/tipe-rumah'
+      preLoaderRoute: typeof TipeRumahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/virtual-tour': {
+      id: '/virtual-tour'
+      path: '/virtual-tour'
+      fullPath: '/virtual-tour'
+      preLoaderRoute: typeof VirtualTourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FasilitasRoute: FasilitasRoute,
+  TipeRumahRoute: TipeRumahRoute,
+  VirtualTourRoute: VirtualTourRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
