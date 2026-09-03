@@ -58,7 +58,7 @@ const tourSteps = [
 ];
 
 function Home() {
-  const house = houses[0];
+  const house = houses[0]!;
 
   return (
     <>
